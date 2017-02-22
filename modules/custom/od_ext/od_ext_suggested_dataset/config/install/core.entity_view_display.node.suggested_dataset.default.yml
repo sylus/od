@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.suggested_dataset.body
+    - node.type.suggested_dataset
+  module:
+    - text
+    - user
+id: node.suggested_dataset.default
+targetEntityType: node
+bundle: suggested_dataset
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  langcode: true

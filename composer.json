@@ -1,0 +1,244 @@
+{
+    "name": "open-data/od",
+    "description": "Project template for Drupal 8 sites built with the Open Data distribution.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "composer/installers": "^1.0",
+        "cweagans/composer-patches": "^1.5.0",
+        "drupal-composer/drupal-scaffold": "^2.0.0",
+        "drupalwxt/wxt": "dev-8.x-2.x",
+        "drupal/chosen": "2.1",
+        "drupal/csv_serialization": "1.0",
+        "drupal/facets": "1.0-alpha7",
+        "drupal/field_default_token": "1.x-dev",
+        "drupal/google_analytics_reports": "3.0-beta1",
+        "drupal/icon": "1.x-dev",
+        "drupal/rate": "1.x-dev",
+        "drupal/sarnia": "dev-8.x-1.x",
+        "drupal/search_api": "1.0-beta4",
+        "drupal/search_api_solr": "1.0-beta1",
+        "drupal/votingapi": "3.0-alpha2",
+        "drupal/views_autocomplete_filters": "1.1",
+        "drupal/views_data_export": "1.0-alpha4",
+        "drupal/views_field_view": "1.0-beta2",
+        "drupal/views_templates": "1.0-alpha1",
+        "drupal/xls_serialization": "1.0-alpha2",
+        "harvesthq/chosen": "1.5.1"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+          "type": "vcs",
+          "url": "http://github.com/sylus/sarnia.git"
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "harvesthq/chosen",
+                "version" : "v1.5.1",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/harvesthq/chosen-package/archive/v1.5.1.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/harvesthq/chosen-package.git",
+                    "type"      : "git",
+                    "reference" : "v1.5.1"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/wet-boew",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.23.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/wet-boew-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-wet-boew",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-theme-wet-boew.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-theme-wet-boew"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-base",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-theme-base.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-theme-base"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-gc-intranet",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-theme-gc-intranet.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-theme-gc-intranet"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-gcwu-fegc",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-theme-gcwu-fegc.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-theme-gcwu-fegc"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-gcweb",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-gcweb.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-gcweb"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-ogpl",
+                "version" : "v4.0.23",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v4.0.23-theme-ogpl.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.23-theme-ogpl"
+                }
+            }
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "@composer drupal-scaffold"
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    },
+    "extra": {
+        "installer-paths": {
+            "html/core": [
+                "type:drupal-core"
+            ],
+            "html/libraries/{$name}" : [
+                "type:drupal-library"
+            ],
+            "html/modules/custom/{$name}": [
+                "drupal/wxt_library"
+            ],
+            "html/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "html/profiles/{$name}": [
+                "type:drupal-profile"
+            ],
+            "html/themes/custom/{$name}": [
+                "drupal/wxt_bootstrap"
+            ],
+            "html/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/chosen": {
+                "Enter drupal/chosen patch #2706433 description here":
+                "https://www.drupal.org/files/issues/composer_dist_problem-2706433-28.patch"
+            },
+            "drupal/google_analytics_reports": {
+                "Enter drupal/google_analytics_reports patch #2795115 description here":
+                "https://www.drupal.org/files/issues/2795115-6.patch",
+                "Enter drupal/google_analytics_reports patch #2825775 description here":
+                "https://www.drupal.org/files/issues/2825775-2.patch",
+                "Enter drupal/google_analytics_reports patch #2825785 description here":
+                "https://www.drupal.org/files/issues/2825785-2.patch",
+                "Enter drupal/google_analytics_reports patch #2846360 description here":
+                "https://www.drupal.org/files/issues/google_analytics_reports-view_omits_zero_index-2846360-2.patch",
+                "Enter drupal/google_analytics_reports patch #2850463 description here":
+                "https://www.drupal.org/files/issues/error_when_saving-2850463-2.patch"
+            },
+            "drupal/rate": {
+                "Enter drupal/rate patch #2834498 description here":
+                "https://www.drupal.org/files/issues/5_star_rating_does_not-2834498-4.patch",
+                "Enter drupal/rate patch #2834501 description here":
+                "https://www.drupal.org/files/issues/warnings_at_thumb_up_down_rating-2834501-2.patch",
+                "Enter drupal/rate patch #2843249 description here":
+                "https://www.drupal.org/files/issues/rate_2843249_1.patch"
+            },
+            "drupal/votingapi": {
+                "Enter drupal/votingapi patch #2832589 description here":
+                "https://www.drupal.org/files/issues/votingapi-result-function-column-length-2832589-2.patch",
+                "Enter drupal/votingapi patch #2846341 description here":
+                "https://www.drupal.org/files/issues/2846341-anonymous-votes-5.patch"
+            }
+        }
+    }
+}

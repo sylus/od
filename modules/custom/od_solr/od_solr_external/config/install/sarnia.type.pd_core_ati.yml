@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Proactive Disclosure: Core ATI'
+id: pd_core_ati
+server_id: pd_core_ati
+index_id: sarnia_pd_core_ati
+id_field: id

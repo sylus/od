@@ -1,0 +1,5 @@
+name: 'Open Data Core'
+description: 'Provides core configuration.'
+type: module
+core: 8.x
+package: 'Open Data'
