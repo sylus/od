@@ -1,0 +1,16 @@
+name: 'Open Data Extend Migrate'
+description: 'Registers migration plugins and provides content.'
+type: module
+core: 8.x
+package: 'Open Data'
+
+# Required modules
+dependencies:
+  - migrate
+  - migrate_plus
+  - migrate_tools
+  - od_ext_suggested_app
+  - od_ext_suggested_dataset
+  - od_ext_taxonomy
+  - od_ext_vote
+  - wxt_ext_media_slideshow

@@ -1,0 +1,61 @@
+id: od_ext_taxonomy_term_device_formats
+label: Taxonomy Terms for Device Formats
+migration_group: od
+dependencies:
+  enforced:
+    module:
+      - od_ext_migration
+source:
+  ids:
+    name:
+      type: string
+  plugin: embedded_data
+  data_rows:
+    - tid: 'web'
+      vid: 'device_formats'
+      name: 'Web'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'android'
+      vid: 'device_formats'
+      name: 'Android'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'blackberry'
+      vid: 'device_formats'
+      name: 'BlackBerry'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'ios'
+      vid: 'device_formats'
+      name: 'iOS'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+process:
+  tid: tid
+  vid: vid
+  name: name
+  'description/value': description
+  'description/format':
+    plugin: default_value
+    default_value: rich_text
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration
+      migration: od_ext_taxonomy_term_device_formats
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies: {}

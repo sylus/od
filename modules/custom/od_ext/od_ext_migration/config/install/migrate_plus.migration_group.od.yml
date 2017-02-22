@@ -1,0 +1,7 @@
+id: od
+label: Open Data Migrations
+description: Provides default content and related configurations for Open Data.
+source_type: Embedded data
+shared_configuration:
+  source:
+    key: default

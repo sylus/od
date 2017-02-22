@@ -1,0 +1,54 @@
+id: od_ext_taxonomy_term_idea_status
+label: Taxonomy Terms for Idea Status
+migration_group: od
+dependencies:
+  enforced:
+    module:
+      - od_ext_migration
+source:
+  ids:
+    name:
+      type: string
+  plugin: embedded_data
+  data_rows:
+    - tid: 'being_implemented'
+      vid: 'idea_status'
+      name: 'Being implemented'
+      language: 'en'
+      description: '<p>Being implemented</p> '
+      weight: '0'
+      parent: '0'
+    - tid: 'implemented'
+      vid: 'idea_status'
+      name: 'Implemented'
+      language: 'en'
+      description: '<p>Implemented</p> '
+      weight: '0'
+      parent: '0'
+    - tid: 'open_discussion'
+      vid: 'idea_status'
+      name: 'Open discussion'
+      language: 'en'
+      description: '<p>Open discussion</p> '
+      weight: '0'
+      parent: '0'
+process:
+  tid: tid
+  vid: vid
+  name: name
+  'description/value': description
+  'description/format':
+    plugin: default_value
+    default_value: rich_text
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration
+      migration: od_ext_taxonomy_term_idea_status
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies: {}

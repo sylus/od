@@ -1,0 +1,54 @@
+id: od_ext_taxonomy_term_consultation_status
+label: Taxonomy Terms for Consultation Status
+migration_group: od
+dependencies:
+  enforced:
+    module:
+      - od_ext_migration
+source:
+  ids:
+    name:
+      type: string
+  plugin: embedded_data
+  data_rows:
+    - tid: 'current'
+      vid: 'consultation_status'
+      name: 'Current'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'past'
+      vid: 'consultation_status'
+      name: 'Past'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'upcoming'
+      vid: 'consultation_status'
+      name: 'Upcoming'
+      language: 'en'
+      description: '<p>Upcoming</p> '
+      weight: '0'
+      parent: '0'
+process:
+  tid: tid
+  vid: vid
+  name: name
+  'description/value': description
+  'description/format':
+    plugin: default_value
+    default_value: rich_text
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration
+      migration: od_ext_taxonomy_term_consultation_status
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies: {}

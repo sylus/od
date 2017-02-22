@@ -1,0 +1,103 @@
+id: od_ext_taxonomy_term_subscriptions
+label: Taxonomy Terms for Subscriptions
+migration_group: od
+dependencies:
+  enforced:
+    module:
+      - od_ext_migration
+source:
+  ids:
+    name:
+      type: string
+  plugin: embedded_data
+  data_rows:
+    - tid: 'academia'
+      vid: 'subscriptions'
+      name: 'Academia'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'business'
+      vid: 'subscriptions'
+      name: 'Business'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'community/non-profit'
+      vid: 'subscriptions'
+      name: 'Community/Non-profit'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'individual'
+      vid: 'subscriptions'
+      name: 'Individual'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'provincial/territorial/state_government'
+      vid: 'subscriptions'
+      name: 'Provincial/Territorial/State Government'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'media'
+      vid: 'subscriptions'
+      name: 'Media'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'municipal_government'
+      vid: 'subscriptions'
+      name: 'Municipal Government'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'federal_government'
+      vid: 'subscriptions'
+      name: 'Federal Government'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'student'
+      vid: 'subscriptions'
+      name: 'Student'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+    - tid: 'other'
+      vid: 'subscriptions'
+      name: 'Other'
+      language: 'en'
+      description: ''
+      weight: '0'
+      parent: '0'
+process:
+  tid: tid
+  vid: vid
+  name: name
+  'description/value': description
+  'description/format':
+    plugin: default_value
+    default_value: rich_text
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration
+      migration: od_ext_taxonomy_term_subscriptions
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies: {}
