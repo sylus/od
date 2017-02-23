@@ -1,0 +1,9 @@
+name: 'Open Data Extend Consultation'
+description: 'Provides structural migrations for Consultation node type and related content.'
+type: module
+core: 8.x
+package: 'Open Data'
+
+# Required modules
+dependencies:
+  - od_ext_taxonomy
