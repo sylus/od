@@ -1,0 +1,138 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.app.body
+    - field.field.node.app.field_app_categories
+    - field.field.node.app.field_app_charge
+    - field.field.node.app.field_app_developer
+    - field.field.node.app.field_app_name
+    - field.field.node.app.field_app_submitter
+    - field.field.node.app.field_app_url
+    - field.field.node.app.field_community
+    - field.field.node.app.field_date_published
+    - field.field.node.app.field_departments
+    - field.field.node.app.field_device_formats
+    - field.field.node.app.field_image
+    - field.field.node.app.field_ribbon
+    - node.type.app
+  module:
+    - datetime
+    - image
+    - link
+    - options
+    - panelizer
+    - text
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: node.app.default
+targetEntityType: node
+bundle: app
+mode: default
+content:
+  body:
+    label: above
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_app_categories:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_app_charge:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_app_developer:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_app_name:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_app_submitter:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_app_url:
+    weight: 4
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_community:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_date_published:
+    weight: 10
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_departments:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_device_formats:
+    weight: 8
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_ribbon:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

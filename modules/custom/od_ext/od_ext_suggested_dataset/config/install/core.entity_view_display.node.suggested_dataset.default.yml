@@ -3,10 +3,21 @@ status: true
 dependencies:
   config:
     - field.field.node.suggested_dataset.body
+    - field.field.node.suggested_dataset.field_image
+    - field.field.node.suggested_dataset.field_status_link
     - node.type.suggested_dataset
   module:
+    - image
+    - link
+    - panelizer
     - text
     - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.suggested_dataset.default
 targetEntityType: node
 bundle: suggested_dataset
@@ -18,7 +29,28 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_status_link:
+    weight: 103
+    label: above
+    settings:
+      trim_length: 128
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
   links:
     weight: 100
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   langcode: true

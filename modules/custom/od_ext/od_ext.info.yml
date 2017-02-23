@@ -7,8 +7,16 @@ package: 'Open Data'
 # Required modules
 dependencies:
   - od_ext_analytics
+  - od_ext_app
+  - od_ext_commitment
+  - od_ext_community
+  - od_ext_dataset
+  - od_ext_deliverable
+  - od_ext_idea
   - od_ext_suggested_app
   - od_ext_suggested_dataset
   - od_ext_taxonomy
   - od_ext_vote
+  - od_ext_user
   - wxt_ext_blog
+  - wxt_ext_page

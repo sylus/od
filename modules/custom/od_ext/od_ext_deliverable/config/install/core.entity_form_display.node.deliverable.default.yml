@@ -2,20 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.image_browser
-    - field.field.node.suggested_dataset.body
-    - field.field.node.suggested_dataset.field_image
-    - field.field.node.suggested_dataset.field_status_link
-    - node.type.suggested_dataset
+    - field.field.node.deliverable.body
+    - node.type.deliverable
   module:
-    - entity_browser
-    - link
     - path
     - text
     - workbench_moderation
-id: node.suggested_dataset.default
+id: node.deliverable.default
 targetEntityType: node
-bundle: suggested_dataset
+bundle: deliverable
 mode: default
 content:
   body:
@@ -31,25 +26,6 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  field_image:
-    type: entity_browser_file
-    weight: 32
-    settings:
-      entity_browser: image_browser
-      field_widget_edit: true
-      field_widget_remove: true
-      view_mode: default
-      preview_image_style: thumbnail
-      open: true
-      selection_mode: selection_append
-    third_party_settings: {  }
-  field_status_link:
-    weight: 33
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
   langcode:
     type: language_select
     weight: 2
@@ -79,8 +55,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  translation:
-    weight: 10
   uid:
     type: entity_reference_autocomplete
     weight: 5

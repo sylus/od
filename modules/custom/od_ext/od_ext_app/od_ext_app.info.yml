@@ -1,0 +1,9 @@
+name: 'Open Data Extend App'
+description: 'For the storage and display of mobile/web applications.'
+type: module
+core: 8.x
+package: 'Open Data'
+
+# Required modules
+dependencies:
+  - od_ext_vote
