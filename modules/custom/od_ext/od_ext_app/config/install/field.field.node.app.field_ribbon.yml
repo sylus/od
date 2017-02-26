@@ -9,7 +9,7 @@ id: node.app.field_ribbon
 field_name: field_ribbon
 entity_type: node
 bundle: app
-label: Ribbon
+label: 'Publishers (Ribbon)'
 description: ''
 required: true
 translatable: true

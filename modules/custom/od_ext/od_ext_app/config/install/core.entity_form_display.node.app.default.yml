@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.app.field_app_developer
     - field.field.node.app.field_app_name
     - field.field.node.app.field_app_submitter
+    - field.field.node.app.field_app_tags
     - field.field.node.app.field_app_url
     - field.field.node.app.field_community
     - field.field.node.app.field_date_published
@@ -20,10 +21,76 @@ dependencies:
   module:
     - datetime
     - entity_browser
+    - field_group
     - link
     - path
     - text
     - workbench_moderation
+third_party_settings:
+  field_group:
+    group_app:
+      children:
+        - group_app_basic_info
+        - group_app_adv_info
+        - group_app_taxonomy
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: App
+    group_app_taxonomy:
+      children:
+        - field_app_categories
+        - field_device_formats
+        - field_app_tags
+        - field_departments
+        - field_community
+      parent_name: group_app
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Taxonomy
+    group_app_basic_info:
+      children:
+        - field_app_name
+        - field_ribbon
+        - field_app_developer
+        - field_app_url
+      parent_name: group_app
+      weight: 20
+      format_type: tab
+      format_settings:
+        label: 'Basic Information'
+        formatter: open
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Basic Information'
+    group_app_adv_info:
+      children:
+        - field_app_submitter
+        - field_date_published
+        - field_app_charge
+      parent_name: group_app
+      weight: 22
+      format_type: tab
+      format_settings:
+        label: 'Advanced Information'
+        formatter: closed
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Advanced Information'
 id: node.app.default
 targetEntityType: node
 bundle: app
@@ -31,7 +98,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 10
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
@@ -43,7 +110,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_app_categories:
-    weight: 15
+    weight: 18
     settings:
       match_operator: CONTAINS
       size: 60
@@ -51,39 +118,32 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_app_charge:
-    weight: 14
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_app_developer:
-    weight: 9
+    weight: 17
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_app_name:
-    weight: 11
+    weight: 14
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_app_submitter:
-    weight: 13
+    weight: 16
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_app_url:
-    weight: 12
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-  field_community:
+  field_app_tags:
     weight: 20
     settings:
       match_operator: CONTAINS
@@ -91,13 +151,28 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  field_date_published:
+  field_app_url:
     weight: 18
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_community:
+    weight: 22
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_date_published:
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
   field_departments:
-    weight: 17
+    weight: 21
     settings:
       match_operator: CONTAINS
       size: 60
@@ -105,7 +180,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_device_formats:
-    weight: 16
+    weight: 19
     settings:
       match_operator: CONTAINS
       size: 60
@@ -125,7 +200,7 @@ content:
       selection_mode: selection_append
     third_party_settings: {  }
   field_ribbon:
-    weight: 19
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60

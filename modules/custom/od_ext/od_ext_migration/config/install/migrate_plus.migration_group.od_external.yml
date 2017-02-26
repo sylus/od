@@ -1,0 +1,7 @@
+id: od_external
+label: Open Data Migrations from external database
+description: Provides migration imports from external databases
+source_type: External Database
+shared_configuration:
+  source:
+    key: source_migration
