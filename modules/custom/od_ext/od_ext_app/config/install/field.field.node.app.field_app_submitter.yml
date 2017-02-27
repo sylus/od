@@ -8,7 +8,7 @@ id: node.app.field_app_submitter
 field_name: field_app_submitter
 entity_type: node
 bundle: app
-label: Submitter
+label: 'Submitter Name'
 description: ''
 required: false
 translatable: false
