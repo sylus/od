@@ -2,7 +2,6 @@
 
 namespace Drupal\od_ext_migration\Plugin\migrate\process;
 
-use Drupal\Core\StreamWrapper\PrivateStream;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\ProcessPluginBase;

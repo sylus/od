@@ -19,21 +19,21 @@ class UserImport extends SqlBase {
    */
   public function query() {
     $query = $this->select('users', 'u')
-                  ->fields('u',
-                  [
-                    'uid',
-                    'name',
-                    'pass',
-                    'mail',
-                    'created',
-                    'access',
-                    'login',
-                    'status',
-                    'timezone',
-                    'language',
-                    'init',
-                    'uuid',
-                  ]
+      ->fields('u',
+      [
+        'uid',
+        'name',
+        'pass',
+        'mail',
+        'created',
+        'access',
+        'login',
+        'status',
+        'timezone',
+        'language',
+        'init',
+        'uuid',
+      ]
     );
 
     return $query;
@@ -92,27 +92,27 @@ class UserImport extends SqlBase {
 
     // Address.
     $address = $this->select('field_data_field_address1', 'db')
-                 ->fields('db',
-                 [
-                   'field_address1_country',
-                   'field_address1_administrative_area',
-                   'field_address1_sub_administrative_area',
-                   'field_address1_locality',
-                   'field_address1_dependent_locality',
-                   'field_address1_postal_code',
-                   'field_address1_thoroughfare',
-                   'field_address1_premise',
-                   'field_address1_sub_premise',
-                   'field_address1_organisation_name',
-                   'field_address1_name_line',
-                   'field_address1_first_name',
-                   'field_address1_last_name',
-                 ])
-                 ->condition('entity_id', $row->getSourceProperty('uid'))
-                 ->condition('revision_id', $row->getSourceProperty('uid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('db',
+      [
+        'field_address1_country',
+        'field_address1_administrative_area',
+        'field_address1_sub_administrative_area',
+        'field_address1_locality',
+        'field_address1_dependent_locality',
+        'field_address1_postal_code',
+        'field_address1_thoroughfare',
+        'field_address1_premise',
+        'field_address1_sub_premise',
+        'field_address1_organisation_name',
+        'field_address1_name_line',
+        'field_address1_first_name',
+        'field_address1_last_name',
+      ])
+      ->condition('entity_id', $row->getSourceProperty('uid'))
+      ->condition('revision_id', $row->getSourceProperty('uid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchAssoc();
 
     $row->setSourceProperty('country_code', $address['field_address1_country']);
     $row->setSourceProperty('administrative_area', $address['field_address1_administrative_area']);

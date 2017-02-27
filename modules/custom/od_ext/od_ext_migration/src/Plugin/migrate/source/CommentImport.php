@@ -19,26 +19,25 @@ class CommentImport extends SqlBase {
    */
   public function query() {
     $query = $this->select('comment', 'c')
-                  ->fields('c',
-                  [
-                    'cid',
-                    'pid',
-                    'nid',
-                    'uid',
-                    'subject',
-                    'hostname',
-                    'created',
-                    'changed',
-                    'status',
-                    'thread',
-                    'name',
-                    'mail',
-                    'homepage',
-                    'language',
-                    'uuid',
-                  ]
+      ->fields('c',
+      [
+        'cid',
+        'pid',
+        'nid',
+        'uid',
+        'subject',
+        'hostname',
+        'created',
+        'changed',
+        'status',
+        'thread',
+        'name',
+        'mail',
+        'homepage',
+        'language',
+        'uuid',
+      ]
     );
-
     $query->join('node', 'n', 'n.nid = c.nid');
     $query->condition('n.type', 'opendata_package', '!=');
 
@@ -90,15 +89,15 @@ class CommentImport extends SqlBase {
 
     // Address.
     $body = $this->select('field_data_comment_body', 'db')
-                 ->fields('db',
-                 [
-                   'comment_body_value',
-                 ])
-                 ->condition('entity_id', $row->getSourceProperty('cid'))
-                 ->condition('revision_id', $row->getSourceProperty('cid'))
-                 ->condition('language', 'und')
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('db',
+      [
+        'comment_body_value',
+      ])
+      ->condition('entity_id', $row->getSourceProperty('cid'))
+      ->condition('revision_id', $row->getSourceProperty('cid'))
+      ->condition('language', 'und')
+      ->execute()
+      ->fetchAssoc();
 
     // Default comment field attached to nodes.
     $row->setSourceProperty('field_name', 'field_comments');

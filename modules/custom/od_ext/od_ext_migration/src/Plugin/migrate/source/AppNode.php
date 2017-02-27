@@ -19,8 +19,8 @@ class AppNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-                  ->fields('n', ['nid', 'vid', 'language', 'title'])
-                  ->condition('n.type', 'apps');
+      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->condition('n.type', 'apps');
 
     return $query;
   }
@@ -73,128 +73,130 @@ class AppNode extends SqlBase {
 
     // Body.
     $body = $this->select('field_data_body', 'db')
-                 ->fields('db', ['body_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('db', ['body_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // Application Name.
     $name = $this->select('field_data_field_application_name', 'df')
-                 ->fields('df', ['field_application_name_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('df', ['field_application_name_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // Application URL.
     $url = $this->select('field_data_field_application_url', 'df')
-                 ->fields('df', ['field_application_url_url'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('df', ['field_application_url_url'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // Application Developer.
     $dev = $this->select('field_data_field_application_developer', 'df')
-                 ->fields('df', ['field_application_developer_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('df', ['field_application_developer_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // App Submitter Name.
     $submitter = $this->select('field_data_field_application_submitter_name', 'df')
-                 ->fields('df', ['field_application_submitter_name_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('df', ['field_application_submitter_name_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // Date Published.
     $date_pub = $this->select('field_data_field_date_published', 'df')
-                 ->fields('df', ['field_date_published_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', 'und')
-                 ->execute()
-                 ->fetchCol();
+      ->fields('df', ['field_date_published_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->execute()
+      ->fetchCol();
 
     // Screenshots.
     // TODO: switch to fetchAllAssoc + remap in YML.
     $file = $this->select('field_data_field_application_screenshots', 'df')
-                 ->fields('df', ['field_application_screenshots_fid',
-                                 'field_application_screenshots_alt',
-                                 'field_application_screenshots_title'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', [
+        'field_application_screenshots_fid',
+        'field_application_screenshots_alt',
+        'field_application_screenshots_title',
+      ])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->execute()
+      ->fetchAssoc();
 
     // App Categories (Subject).
     // TODO: switch to fetchAllAssoc + remap in YML.
     $app_categories = $this->select('field_data_field_application_categories', 'df')
-                 ->fields('df', ['field_application_categories_target_id'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', 'und')
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_application_categories_target_id'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->execute()
+      ->fetchAssoc();
 
     // App Tags (Keywords).
     // TODO: switch to fetchAllAssoc + remap in YML.
     $app_tags = $this->select('field_data_field_app_tags', 'df')
-                 ->fields('df', ['field_app_tags_tid'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_app_tags_tid'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchAssoc();
 
     // Community.
     // TODO: switch to fetchAllAssoc + remap in YML.
     $community = $this->select('field_data_field_community', 'df')
-                 ->fields('df', ['field_community_tid'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', 'und')
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_community_tid'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->execute()
+      ->fetchAssoc();
 
     // Departments.
     // TODO: switch to fetchAllAssoc + remap in YML.
     $departments = $this->select('field_data_field_departments', 'df')
-                 ->fields('df', ['field_departments_target_id'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_departments_target_id'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchAssoc();
 
     // Device Formats.
     // TODO: switch to fetchAllAssoc + remap in YML.
     $device_formats = $this->select('field_data_field_device_formats', 'df')
-                 ->fields('df', ['field_device_formats_target_id'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', 'und')
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_device_formats_target_id'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->execute()
+      ->fetchAssoc();
 
     // Ribbon.
     // TODO: switch to fetchAllAssoc + remap in YML.
     $ribbon = $this->select('field_data_field_ribbon', 'df')
-                 ->fields('df', ['field_ribbon_tid'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', ['field_ribbon_tid'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchAssoc();
 
     $row->setSourceProperty('body', $body[0]);
     $row->setSourceProperty('name', $name[0]);

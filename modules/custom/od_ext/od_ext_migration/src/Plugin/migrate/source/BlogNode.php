@@ -19,8 +19,8 @@ class BlogNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-                  ->fields('n', ['nid', 'vid', 'language', 'title'])
-                  ->condition('n.type', 'blog_post');
+      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->condition('n.type', 'blog_post');
 
     return $query;
   }
@@ -62,23 +62,25 @@ class BlogNode extends SqlBase {
 
     // Body.
     $body = $this->select('field_data_body', 'db')
-                 ->fields('db', ['body_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('db', ['body_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     // Blog Image.
     $file = $this->select('field_data_field_featured_image', 'df')
-                 ->fields('df', ['field_featured_image_fid',
-                                 'field_featured_image_alt',
-                                 'field_featured_image_title'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchAssoc();
+      ->fields('df', [
+        'field_featured_image_fid',
+        'field_featured_image_alt',
+        'field_featured_image_title',
+      ])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchAssoc();
 
     $row->setSourceProperty('body', $body[0]);
     $row->setSourceProperty('file_fid', $file['field_featured_image_fid']);

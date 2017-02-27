@@ -19,8 +19,8 @@ class SuggestedDatasetNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-                  ->fields('n', ['nid', 'vid', 'language', 'title'])
-                  ->condition('n.type', 'suggested_datasets');
+      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->condition('n.type', 'suggested_datasets');
 
     return $query;
   }
@@ -59,12 +59,12 @@ class SuggestedDatasetNode extends SqlBase {
 
     // Body.
     $body = $this->select('field_data_body', 'db')
-                 ->fields('db', ['body_value'])
-                 ->condition('entity_id', $row->getSourceProperty('nid'))
-                 ->condition('revision_id', $row->getSourceProperty('vid'))
-                 ->condition('language', $row->getSourceProperty('language'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('db', ['body_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->execute()
+      ->fetchCol();
 
     $row->setSourceProperty('body', $body[0]);
 

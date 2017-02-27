@@ -19,7 +19,7 @@ class TaxonomyTermData extends SqlBase {
    */
   public function query() {
     $query = $this->select('taxonomy_term_data', 't')
-                  ->fields('t', ['tid', 'vid', 'name', 'description', 'language']);
+      ->fields('t', ['tid', 'vid', 'name', 'description', 'language']);
 
     return $query;
   }
@@ -63,57 +63,71 @@ class TaxonomyTermData extends SqlBase {
     $vid = '';
     switch ($row->getSourceProperty('vid')) {
       case 2:
-          $vid = 'wxt_categories';
-          break;
+        $vid = 'wxt_categories';
+        break;
+
       case 3:
-          $vid = 'departments';
-          break;
+        $vid = 'departments';
+        break;
+
       case 4:
-          $vid = 'device_formats';
-          break;
+        $vid = 'device_formats';
+        break;
+
       case 5:
-          $vid = 'app_categories';
-          break;
+        $vid = 'app_categories';
+        break;
+
       case 7:
-          $vid = 'app_freetags';
-          break;
+        $vid = 'app_freetags';
+        break;
+
       case 8:
-          $vid = 'app_ribbon';
-          break;
+        $vid = 'app_ribbon';
+        break;
+
       case 9:
-          $vid = 'site_structure';
-          break;
+        $vid = 'site_structure';
+        break;
+
       case 10:
-          $vid = 'consultation_status';
-          break;
+        $vid = 'consultation_status';
+        break;
+
       case 11:
-          $vid = 'idea_status';
-          break;
+        $vid = 'idea_status';
+        break;
+
       case 13:
-          $vid = 'idea_freetags';
-          break;
+        $vid = 'idea_freetags';
+        break;
+
       case 15:
-          $vid = 'subscriptions';
-          break;
+        $vid = 'subscriptions';
+        break;
+
       case 17:
-          $vid = 'communities';
-          break;
+        $vid = 'communities';
+        break;
+
       case 18:
-          $vid = 'commitment_freetags';
-          break;
+        $vid = 'commitment_freetags';
+        break;
+
       case 19:
-          $vid = 'commitments';
-          break;
+        $vid = 'commitments';
+        break;
+
       default:
         $vid = 'wxt_categories';
     }
 
     // Parent ID Term.
     $parent_id = $this->select('taxonomy_term_hierarchy', 'th')
-                 ->fields('th', ['parent'])
-                 ->condition('tid', $row->getSourceProperty('tid'))
-                 ->execute()
-                 ->fetchCol();
+      ->fields('th', ['parent'])
+      ->condition('tid', $row->getSourceProperty('tid'))
+      ->execute()
+      ->fetchCol();
 
     $row->setSourceProperty('vid', $vid);
     $row->setSourceProperty('parent_id', $parent_id[0]);
