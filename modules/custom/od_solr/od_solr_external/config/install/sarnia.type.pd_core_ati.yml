@@ -1,7 +1,9 @@
 langcode: en
 status: true
-dependencies: {  }
-name: 'Proactive Disclosure: Core ATI'
+dependencies:
+  config:
+    - search_api.index.sarnia_pd_core_ati
+name: 'Proactive Disclosure: Core ATI (Sarnia index)'
 id: pd_core_ati
 server_id: pd_core_ati
 index_id: sarnia_pd_core_ati

@@ -3,10 +3,10 @@ status: true
 dependencies:
   module:
     - sarnia
-id: sarnia.solr_document
-field_name: solr_document
-entity_type: sarnia
-type: sarnia_solr_document
+id: solr_document.solr_field
+field_name: solr_field
+entity_type: solr_document
+type: solr_field
 settings: {  }
 module: sarnia
 locked: true
