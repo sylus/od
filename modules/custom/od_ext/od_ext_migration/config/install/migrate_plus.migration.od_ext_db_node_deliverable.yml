@@ -25,6 +25,15 @@ process:
     plugin: default_value
     default_value: rich_text
   langcode: language
+  field_deliverable_next_steps/value: next_steps
+  field_deliverable_next_steps/format:
+    plugin: default_value
+    default_value: rich_text
+  field_deliverable_progress/value: progress
+  field_deliverable_progress/format:
+    plugin: default_value
+    default_value: rich_text
+  field_deliverable_status/value: status
 destination:
   plugin: 'entity:node'
 migration_dependencies:

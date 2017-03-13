@@ -25,6 +25,10 @@ process:
     plugin: default_value
     default_value: rich_text
   langcode: language
+  field_suggested_app_dataset/value: dataset
+  field_suggested_app_dataset/format:
+    plugin: default_value
+    default_value: rich_text
 destination:
   plugin: 'entity:node'
 migration_dependencies:

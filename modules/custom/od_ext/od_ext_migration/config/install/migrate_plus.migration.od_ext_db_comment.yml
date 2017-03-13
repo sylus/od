@@ -44,11 +44,11 @@ destination:
 migration_dependencies:
   required:
     - od_ext_db_file
-    - od_ext_db_node
     - od_ext_db_node_app
     - od_ext_db_node_blog
     - od_ext_db_node_commitment
     - od_ext_db_node_community
+    - od_ext_db_node_consultation
     - od_ext_db_node_deliverable
     - od_ext_db_node_idea
     - od_ext_db_node_page

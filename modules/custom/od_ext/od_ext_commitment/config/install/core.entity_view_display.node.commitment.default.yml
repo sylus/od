@@ -2,11 +2,30 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.commitment.body
+    - field.field.node.commitment.comment
+    - field.field.node.commitment.field_commitment_ambition
+    - field.field.node.commitment.field_commitment_deliverable
+    - field.field.node.commitment.field_commitment_end_date
+    - field.field.node.commitment.field_commitment_pillars
+    - field.field.node.commitment.field_commitment_relevance
+    - field.field.node.commitment.field_commitment_status
+    - field.field.node.commitment.field_commitment_tags
+    - field.field.node.commitment.field_department
     - node.type.commitment
   module:
+    - comment
+    - options
+    - panelizer
     - text
     - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.commitment.default
 targetEntityType: node
 bundle: commitment
@@ -15,10 +34,72 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 2
     settings: {  }
     third_party_settings: {  }
+  comment:
+    weight: 10
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+  field_commitment_ambition:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_commitment_deliverable:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_commitment_end_date:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_commitment_pillars:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_commitment_relevance:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_commitment_status:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_commitment_tags:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_department:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   links:
-    weight: 100
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   langcode: true

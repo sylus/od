@@ -6,7 +6,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for file content.
+ * Source plugin for user_import content.
  *
  * @MigrateSource(
  *   id = "user_import"

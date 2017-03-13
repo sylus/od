@@ -10,7 +10,7 @@ id: node.commitment.body
 field_name: body
 entity_type: node
 bundle: commitment
-label: Body
+label: Description
 description: ''
 required: false
 translatable: true

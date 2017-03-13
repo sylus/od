@@ -6,7 +6,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for app content.
+ * Source plugin for suggested_app content.
  *
  * @MigrateSource(
  *   id = "suggested_app_node"
@@ -19,7 +19,13 @@ class SuggestedAppNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->fields('n',
+      [
+        'nid',
+        'vid',
+        'language',
+        'title',
+      ])
       ->condition('n.type', 'suggested_applications');
 
     return $query;
@@ -38,6 +44,7 @@ class SuggestedAppNode extends SqlBase {
       'file_fid' => $this->t('File fid'),
       'file_alt' => $this->t('File alt'),
       'file_title' => $this->t('File title'),
+      'dataset' => $this->t('Dataset'),
     ];
 
     return $fields;
@@ -60,16 +67,41 @@ class SuggestedAppNode extends SqlBase {
    */
   public function prepareRow(Row $row) {
 
+    // Title Field.
+    $title = $this->select('field_data_title_field', 'db')
+      ->fields('db', ['title_field_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'suggested_applications')
+      ->execute()
+      ->fetchCol();
+
     // Body.
     $body = $this->select('field_data_body', 'db')
       ->fields('db', ['body_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'suggested_applications')
       ->execute()
       ->fetchCol();
 
+    // Dataset.
+    $dataset = $this->select('field_data_field_possible_supporting_datase', 'db')
+      ->fields('db', ['field_possible_supporting_datase_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'suggested_applications')
+      ->execute()
+      ->fetchCol();
+
+    if (!empty($title[0])) {
+      $row->setSourceProperty('title', $title[0]);
+    }
     $row->setSourceProperty('body', $body[0]);
+    $row->setSourceProperty('dataset', $dataset[0]);
 
     return parent::prepareRow($row);
   }

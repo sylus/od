@@ -19,7 +19,13 @@ class AppNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->fields('n',
+      [
+        'nid',
+        'vid',
+        'language',
+        'title',
+      ])
       ->condition('n.type', 'apps');
 
     return $query;
@@ -71,12 +77,23 @@ class AppNode extends SqlBase {
    */
   public function prepareRow(Row $row) {
 
+    // Title Field.
+    $title = $this->select('field_data_title_field', 'db')
+      ->fields('db', ['title_field_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
+      ->execute()
+      ->fetchCol();
+
     // Body.
     $body = $this->select('field_data_body', 'db')
       ->fields('db', ['body_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchCol();
 
@@ -86,6 +103,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchCol();
 
@@ -95,6 +113,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchCol();
 
@@ -104,6 +123,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchCol();
 
@@ -113,6 +133,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchCol();
 
@@ -135,6 +156,7 @@ class AppNode extends SqlBase {
       ])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -145,6 +167,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', 'und')
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -155,6 +178,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -165,6 +189,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', 'und')
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -175,6 +200,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -185,6 +211,7 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', 'und')
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
@@ -195,9 +222,13 @@ class AppNode extends SqlBase {
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'apps')
       ->execute()
       ->fetchAssoc();
 
+    if (!empty($title[0])) {
+      $row->setSourceProperty('title', $title[0]);
+    }
     $row->setSourceProperty('body', $body[0]);
     $row->setSourceProperty('name', $name[0]);
     $row->setSourceProperty('url', $url[0]);

@@ -6,7 +6,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for app content.
+ * Source plugin for idea content.
  *
  * @MigrateSource(
  *   id = "idea_node"
@@ -19,7 +19,13 @@ class IdeaNode extends SqlBase {
    */
   public function query() {
     $query = $this->select('node', 'n')
-      ->fields('n', ['nid', 'vid', 'language', 'title'])
+      ->fields('n',
+      [
+        'nid',
+        'vid',
+        'language',
+        'title',
+      ])
       ->condition('n.type', 'idea');
 
     return $query;
@@ -35,6 +41,10 @@ class IdeaNode extends SqlBase {
       'language' => $this->t('Language'),
       'title' => $this->t('Title'),
       'body' => $this->t('Body'),
+      'freetags' => $this->t('Tags'),
+      'status' => $this->t('Status'),
+      'submission_name' => $this->t('Submission Name'),
+      'tags' => $this->t('Tags'),
     ];
 
     return $fields;
@@ -57,16 +67,77 @@ class IdeaNode extends SqlBase {
    */
   public function prepareRow(Row $row) {
 
-    // Body.
-    $body = $this->select('field_data_body', 'db')
-      ->fields('db', ['body_value'])
+    // Title Field.
+    $title = $this->select('field_data_title_field', 'db')
+      ->fields('db', ['title_field_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'idea')
       ->execute()
       ->fetchCol();
 
+    // Body.
+    $body = $this->select('field_data_field_idea', 'db')
+      ->fields('db', ['field_idea_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'idea')
+      ->execute()
+      ->fetchCol();
+
+    // Tags (Keywords).
+    // TODO: switch to fetchAllAssoc + remap in YML.
+    $freetags = $this->select('field_data_field_idea_tags', 'df')
+      ->fields('df', ['field_idea_tags_tid'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'idea')
+      ->execute()
+      ->fetchAssoc();
+
+    // Status.
+    // TODO: switch to fetchAllAssoc + remap in YML.
+    $status = $this->select('field_data_sc_consultation_field_status', 'df')
+      ->fields('df', ['sc_consultation_field_status_tid'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
+      ->condition('bundle', 'idea')
+      ->execute()
+      ->fetchAssoc();
+
+    // Submission Name.
+    $submission_name = $this->select('field_data_field_submitted_by', 'db')
+      ->fields('db', ['field_submitted_by_value'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->condition('bundle', 'idea')
+      ->execute()
+      ->fetchCol();
+
+    // Tags.
+    // TODO: switch to fetchAllAssoc + remap in YML.
+    $tags = $this->select('field_data_field_consultation', 'df')
+      ->fields('df', ['field_consultation_target_id'])
+      ->condition('entity_id', $row->getSourceProperty('nid'))
+      ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', 'und')
+      ->condition('bundle', 'idea')
+      ->execute()
+      ->fetchAssoc();
+
+    if (!empty($title[0])) {
+      $row->setSourceProperty('title', $title[0]);
+    }
     $row->setSourceProperty('body', $body[0]);
+    $row->setSourceProperty('freetags', $freetags['field_idea_tags_tid']);
+    $row->setSourceProperty('status', $status['sc_consultation_field_status_tid']);
+    $row->setSourceProperty('submission_name', $submission_name[0]);
+    $row->setSourceProperty('tags', $tags['field_consultation_target_id']);
 
     return parent::prepareRow($row);
   }

@@ -3,12 +3,13 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_parent_consultation
-field_name: field_parent_consultation
+    - taxonomy
+id: node.field_commitment_pillars
+field_name: field_commitment_pillars
 entity_type: node
 type: entity_reference
 settings:
-  target_type: node
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: 1

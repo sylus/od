@@ -25,9 +25,23 @@ process:
     plugin: default_value
     default_value: rich_text
   langcode: language
+  field_idea_consultation/target_id:
+    plugin: migration
+    migration: od_ext_db_node_consultation
+    source: tags
+  field_idea_tags/target_id:
+    plugin: migration
+    migration: od_ext_db_taxonomy_term
+    source: freetags
+  field_idea_status/target_id:
+    plugin: migration
+    migration: od_ext_db_taxonomy_term
+    source: status
+  field_idea_submission_name/value: submission_name
 destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
     - od_ext_db_file
     - od_ext_db_taxonomy_term
+    - od_ext_db_node_consultation

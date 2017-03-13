@@ -2,9 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.community.body
+    - field.field.node.community.comment
     - node.type.community
   module:
+    - comment
     - text
     - user
 id: node.community.default
@@ -18,6 +21,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+  comment:
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
   links:
     weight: 100
 hidden:

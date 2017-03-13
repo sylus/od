@@ -3,3 +3,7 @@ description: 'Provides core configuration.'
 type: module
 core: 8.x
 package: 'Open Data'
+
+# Required modules
+dependencies:
+  - datetime_range

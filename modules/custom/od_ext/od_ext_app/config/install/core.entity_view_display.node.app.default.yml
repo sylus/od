@@ -2,7 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.app.body
+    - field.field.node.app.comment
     - field.field.node.app.field_app_categories
     - field.field.node.app.field_app_charge
     - field.field.node.app.field_app_developer
@@ -18,6 +20,7 @@ dependencies:
     - field.field.node.app.field_ribbon
     - node.type.app
   module:
+    - comment
     - datetime
     - image
     - link
@@ -41,6 +44,14 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+  comment:
+    weight: 11
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
   field_app_categories:
     weight: 4
     label: above

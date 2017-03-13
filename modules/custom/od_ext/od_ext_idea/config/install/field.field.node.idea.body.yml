@@ -10,7 +10,7 @@ id: node.idea.body
 field_name: body
 entity_type: node
 bundle: idea
-label: Body
+label: Details
 description: ''
 required: false
 translatable: true

@@ -19,7 +19,13 @@ class FileManaged extends SqlBase {
    */
   public function query() {
     $query = $this->select('file_managed', 'f')
-      ->fields('f', ['fid', 'filename', 'uri']);
+      ->fields('f',
+      [
+        'fid',
+        'filename',
+        'uri',
+      ]
+    );
 
     return $query;
   }

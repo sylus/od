@@ -10,7 +10,7 @@ id: node.deliverable.body
 field_name: body
 entity_type: node
 bundle: deliverable
-label: Body
+label: Description
 description: ''
 required: false
 translatable: true

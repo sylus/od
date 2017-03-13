@@ -7,7 +7,7 @@ id: node.suggested_app.title
 field_name: title
 entity_type: node
 bundle: suggested_app
-label: 'Name of app'
+label: Name
 description: ''
 required: true
 translatable: true

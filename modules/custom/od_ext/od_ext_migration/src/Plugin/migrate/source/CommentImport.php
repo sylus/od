@@ -6,7 +6,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for file content.
+ * Source plugin for comment content.
  *
  * @MigrateSource(
  *   id = "comment_import"
@@ -38,8 +38,6 @@ class CommentImport extends SqlBase {
         'uuid',
       ]
     );
-    $query->join('node', 'n', 'n.nid = c.nid');
-    $query->condition('n.type', 'opendata_package', '!=');
 
     return $query;
   }
@@ -100,7 +98,7 @@ class CommentImport extends SqlBase {
       ->fetchAssoc();
 
     // Default comment field attached to nodes.
-    $row->setSourceProperty('field_name', 'field_comments');
+    $row->setSourceProperty('field_name', 'comment');
 
     // Lookup the correct nid / bundle / comment field.
     $lookup = [
@@ -108,6 +106,7 @@ class CommentImport extends SqlBase {
       'blog',
       'commitment',
       'community',
+      'consultation',
       'deliverable',
       'idea',
       'page',

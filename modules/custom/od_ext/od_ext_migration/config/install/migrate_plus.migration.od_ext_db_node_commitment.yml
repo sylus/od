@@ -25,9 +25,42 @@ process:
     plugin: default_value
     default_value: rich_text
   langcode: language
+  field_commitment_ambition/value: ambition
+  field_commitment_ambition/format:
+    plugin: default_value
+    default_value: rich_text
+  field_department/target_id:
+    plugin: migration
+    migration: od_ext_db_taxonomy_term
+    source: department
+  field_commitment_relevance/value: relevance
+  field_commitment_relevance/format:
+    plugin: default_value
+    default_value: rich_text
+  field_commitment_deliverable/target_id:
+    plugin: migration
+    migration: od_ext_db_node_deliverable
+    source: deliverable
+  field_commitment_end_date/value: end_date
+  field_commitment_end_date/format:
+    plugin: default_value
+    default_value: rich_text
+  field_commitment_tags/target_id:
+    plugin: migration
+    migration: od_ext_db_taxonomy_term
+    source: tags
+  field_commitment_pillars/target_id:
+    plugin: migration
+    migration: od_ext_db_taxonomy_term
+    source: pillars
+  field_commitment_status/value: status
+  field_commitment_status/format:
+    plugin: default_value
+    default_value: rich_text
 destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
     - od_ext_db_file
     - od_ext_db_taxonomy_term
+    - od_ext_db_node_deliverable

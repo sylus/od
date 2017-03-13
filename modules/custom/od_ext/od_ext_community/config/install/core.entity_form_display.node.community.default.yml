@@ -3,8 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.community.body
+    - field.field.node.community.comment
     - node.type.community
   module:
+    - comment
     - path
     - text
     - workbench_moderation
@@ -21,6 +23,11 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+  comment:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
   created:
     type: datetime_timestamp
     weight: 10
@@ -55,6 +62,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
   uid:
     type: entity_reference_autocomplete
     weight: 5

@@ -6,7 +6,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Source plugin for file content.
+ * Source plugin for taxonomy content.
  *
  * @MigrateSource(
  *   id = "taxonomy_term_data"
@@ -19,7 +19,15 @@ class TaxonomyTermData extends SqlBase {
    */
   public function query() {
     $query = $this->select('taxonomy_term_data', 't')
-      ->fields('t', ['tid', 'vid', 'name', 'description', 'language']);
+      ->fields('t',
+      [
+        'tid',
+        'vid',
+        'name',
+        'description',
+        'language',
+      ]
+    );
 
     return $query;
   }

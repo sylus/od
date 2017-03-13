@@ -4,6 +4,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.app.body
+    - field.field.node.app.comment
     - field.field.node.app.field_app_categories
     - field.field.node.app.field_app_charge
     - field.field.node.app.field_app_developer
@@ -19,6 +20,7 @@ dependencies:
     - field.field.node.app.field_ribbon
     - node.type.app
   module:
+    - comment
     - datetime
     - entity_browser
     - field_group
@@ -104,6 +106,11 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+  comment:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
   created:
     type: datetime_timestamp
     weight: 3
