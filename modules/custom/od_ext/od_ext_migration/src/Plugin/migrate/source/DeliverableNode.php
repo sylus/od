@@ -96,7 +96,7 @@ class DeliverableNode extends SqlBase {
       ->execute()
       ->fetchCol();
 
-    // Progress
+    // Progress.
     $progress = $this->select('field_data_field_deliverable_progress', 'db')
       ->fields('db', ['field_deliverable_progress_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -106,7 +106,7 @@ class DeliverableNode extends SqlBase {
       ->execute()
       ->fetchCol();
 
-    // Status
+    // Status.
     $status = $this->select('field_data_field_deliverable_status', 'db')
       ->fields('db', ['field_deliverable_status_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))

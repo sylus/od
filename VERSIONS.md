@@ -16,7 +16,7 @@ Given the following tag: 8.x-2.15:
 | __8__ | Major version of Drupal Core |
 | __x__ |  |
 | __2__ | Major version of Open Data |
-| __1__ | Feature release of Open Data. Also increments with minor core releases. |
+| __1__ | Feature release of Open Data + Increments with minor core releases. |
 | __5__ | Sprint release between feature releases |
 
 Open Data typically makes a sprint release every four weeks. We'll also use

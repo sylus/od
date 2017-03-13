@@ -6,5 +6,5 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - od_ext_taxonomy
-  - od_ext_vote
+  - drupal:od_ext_taxonomy
+  - drupal:od_ext_vote

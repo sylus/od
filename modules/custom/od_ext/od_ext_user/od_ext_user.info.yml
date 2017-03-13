@@ -4,6 +4,6 @@ type: module
 core: 8.x
 package: 'Open Data'
 dependencies:
-  - address
-  - od_ext_taxonomy
-  - wxt_ext_user
+  - drupal:address
+  - drupal:od_ext_taxonomy
+  - drupal:wxt_ext_user

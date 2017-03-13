@@ -6,4 +6,4 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - od_core
+  - drupal:od_core

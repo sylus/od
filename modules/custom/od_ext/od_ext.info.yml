@@ -6,19 +6,19 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - od_ext_analytics
-  - od_ext_app
-  - od_ext_commitment
-  - od_ext_community
-  - od_ext_consultation
-  - od_ext_dataset
-  - od_ext_deliverable
-  - od_ext_idea
-  - od_ext_suggested_app
-  - od_ext_suggested_dataset
-  - od_ext_taxonomy
-  - od_ext_user
-  - od_ext_vote
-  - od_ext_webform
-  - wxt_ext_blog
-  - wxt_ext_page
+  - drupal:od_ext_analytics
+  - drupal:od_ext_app
+  - drupal:od_ext_commitment
+  - drupal:od_ext_community
+  - drupal:od_ext_consultation
+  - drupal:od_ext_dataset
+  - drupal:od_ext_deliverable
+  - drupal:od_ext_idea
+  - drupal:od_ext_suggested_app
+  - drupal:od_ext_suggested_dataset
+  - drupal:od_ext_taxonomy
+  - drupal:od_ext_user
+  - drupal:od_ext_vote
+  - drupal:od_ext_webform
+  - drupal:wxt_ext_blog
+  - drupal:wxt_ext_page

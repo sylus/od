@@ -6,4 +6,4 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - wxt_ext_webform
+  - drupal:wxt_ext_webform

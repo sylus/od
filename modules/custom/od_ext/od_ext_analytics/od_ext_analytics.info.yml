@@ -6,5 +6,5 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - google_analytics_reports
-  - google_analytics_reports_api
+  - drupal:google_analytics_reports
+  - drupal:google_analytics_reports_api

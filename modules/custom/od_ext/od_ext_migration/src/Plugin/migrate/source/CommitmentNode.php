@@ -164,7 +164,7 @@ class CommitmentNode extends SqlBase {
       ->execute()
       ->fetchAssoc();
 
-    // Status
+    // Status.
     $status = $this->select('field_data_field_commitment_status', 'df')
       ->fields('df', ['field_commitment_status_value'])
       ->condition('entity_id', $row->getSourceProperty('nid'))

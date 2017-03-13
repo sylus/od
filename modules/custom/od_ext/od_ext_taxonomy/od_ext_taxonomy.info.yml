@@ -6,4 +6,4 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - taxonomy
+  - drupal:taxonomy

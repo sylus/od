@@ -3,7 +3,6 @@
 namespace Drupal\od_ext_migration\Plugin\migrate\source;
 
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
-use Drupal\migrate\Row;
 
 /**
  * Source plugin for file content.
@@ -53,14 +52,6 @@ class FileManaged extends SqlBase {
         'alias' => 'f',
       ],
     ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function prepareRow(Row $row) {
-
-    return parent::prepareRow($row);
   }
 
 }

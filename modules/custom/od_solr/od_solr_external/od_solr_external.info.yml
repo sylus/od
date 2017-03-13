@@ -6,7 +6,7 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - od_solr
-  - sarnia
-  - search_api
-  - search_api_solr
+  - drupal:od_solr
+  - drupal:sarnia
+  - drupal:search_api
+  - drupal:search_api_solr

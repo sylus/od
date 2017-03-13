@@ -14,7 +14,7 @@ keep_english: true
 # Required modules
 dependencies:
   # custom (od)
-  - od_core
+  - drupal:od_core
 
 themes:
   - bartik

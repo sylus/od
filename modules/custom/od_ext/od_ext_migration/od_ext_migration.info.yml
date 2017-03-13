@@ -6,11 +6,11 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
-  - migrate
-  - migrate_plus
-  - migrate_tools
-  - od_ext_suggested_app
-  - od_ext_suggested_dataset
-  - od_ext_taxonomy
-  - od_ext_vote
-  - wxt_ext_media_slideshow
+  - drupal:migrate
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:od_ext_suggested_app
+  - drupal:od_ext_suggested_dataset
+  - drupal:od_ext_taxonomy
+  - drupal:od_ext_vote
+  - drupal:wxt_ext_media_slideshow
