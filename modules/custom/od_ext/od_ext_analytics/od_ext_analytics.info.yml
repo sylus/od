@@ -8,3 +8,9 @@ package: 'Open Data'
 dependencies:
   - drupal:google_analytics_reports
   - drupal:google_analytics_reports_api
+  - drupal:csv_serialization
+  - drupal:rest
+  - drupal:hal
+  - drupal:basic_auth
+  - drupal:serialization
+  - drupal:xls_serialization
