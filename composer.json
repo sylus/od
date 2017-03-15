@@ -231,8 +231,14 @@
                 "https://www.drupal.org/files/issues/5_star_rating_does_not-2834498-4.patch",
                 "Enter drupal/rate patch #2834501 description here":
                 "https://www.drupal.org/files/issues/warnings_at_thumb_up_down_rating-2834501-2.patch",
-                "Enter drupal/rate patch #2843249 description here":
-                "https://www.drupal.org/files/issues/rate_2843249_1.patch"
+                "Enter drupal/rate patch #2834501 description here":
+                "https://www.drupal.org/files/issues/rate-2832174-d8-fix-display-weight.patch",
+                "Enter drupal/rate patch #2834501 description here":
+                "https://www.drupal.org/files/issues/rate_2856447_dont-display-messages-with-ajax.patch",
+                "Enter drupal/rate patch #2834501 description here":
+                "https://www.drupal.org/files/issues/hardcoded_vote_types_in-2860982-2.patch",
+                "Enter drupal/rate patch #2834501 description here":
+                "https://gist.githubusercontent.com/sylus/1b349791ecee50b930145e028bef8d07/raw/434f1a951c2a100565c6f197f1c8c5a7d30c6be9/hardcoded_vote_types.patch"
             },
             "drupal/votingapi": {
                 "Enter drupal/votingapi patch #2832589 description here":

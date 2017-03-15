@@ -1,0 +1,10 @@
+name: 'Open Data Extend Suggested App'
+description: 'Provides functionality for rating of entities.'
+type: module
+core: 8.x
+package: 'Open Data'
+
+# Required modules
+dependencies:
+  - drupal:rate
+  - drupal:votingapi
