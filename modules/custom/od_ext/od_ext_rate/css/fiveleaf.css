@@ -24,6 +24,8 @@
   width: 25px;
   stroke: black;
   stroke-width: 0.025em
+  -webkit-filter:  drop-shadow( 2px 2px 1px grey);
+  filter: drop-shadow( 2px 1px 1px grey);
 }
 
 .rate-widget-fiveleaf svg:hover .canada_leaf {
