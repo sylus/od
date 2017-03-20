@@ -579,6 +579,7 @@ display:
         fields: false
         pager: false
         use_ajax: false
+        title: false
       filter_groups:
         operator: AND
         groups:
@@ -768,6 +769,7 @@ display:
             pagePath:
               alias: ''
               raw_output: 0
+      title: 'Google Analytics 404'
     cache_metadata:
       max-age: -1
       contexts:

@@ -1457,13 +1457,13 @@ display:
       display_extenders: {  }
       path: reports/analytics/downloads
       menu:
-        type: normal
+        type: none
         title: 'Google Analytics Summary'
         description: 'View a traffic report for your site.'
-        expanded: false
+        expanded: 0
         parent: system.admin_reports
-        weight: 0
-        context: '0'
+        weight: '0'
+        context: 0
         menu_name: admin
       filters:
         start_date:
@@ -1577,6 +1577,7 @@ display:
         filter_groups: false
         fields: false
         pager: false
+        css_class: false
       filter_groups:
         operator: AND
         groups:
@@ -1736,6 +1737,7 @@ display:
           items_per_page: '500'
           offset: '0'
       display_description: ''
+      css_class: google-analytics-reports-downloads
     cache_metadata:
       max-age: 0
       contexts:
@@ -1752,13 +1754,13 @@ display:
       display_extenders: {  }
       path: reports/analytics/404
       menu:
-        type: normal
+        type: none
         title: 'Google Analytics Summary'
         description: 'View a traffic report for your site.'
-        expanded: false
+        expanded: 0
         parent: system.admin_reports
-        weight: 0
-        context: '0'
+        weight: '0'
+        context: 0
         menu_name: admin
       filters:
         start_date:
@@ -1852,6 +1854,8 @@ display:
         fields: false
         pager: false
         use_ajax: false
+        title: false
+        css_class: false
       filter_groups:
         operator: AND
         groups:
@@ -1979,6 +1983,8 @@ display:
           quantity: '9'
       use_ajax: true
       display_description: ''
+      title: 'Google Analytics 404'
+      css_class: google-analytics-reports-404
     cache_metadata:
       max-age: 0
       contexts:
