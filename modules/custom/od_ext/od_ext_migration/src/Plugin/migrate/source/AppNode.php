@@ -153,12 +153,14 @@ class AppNode extends SqlBase {
         'field_application_screenshots_fid',
         'field_application_screenshots_alt',
         'field_application_screenshots_title',
+        'field_application_screenshots_width',
+        'field_application_screenshots_height',
       ])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_application_screenshots_fid');
 
     // App Categories (Subject).
     $app_categories = $this->select('field_data_field_application_categories', 'df')
@@ -235,9 +237,7 @@ class AppNode extends SqlBase {
     $row->setSourceProperty('departments', $departments);
     $row->setSourceProperty('device_formats', $device_formats);
     $row->setSourceProperty('ribbon', $ribbon['field_ribbon_tid']);
-    $row->setSourceProperty('file_fid', $file['field_application_screenshots_fid']);
-    $row->setSourceProperty('file_alt', $file['field_application_screenshots_alt']);
-    $row->setSourceProperty('file_title', $file['field_application_screenshots_title']);
+    $row->setSourceProperty('file', $file);
 
     return parent::prepareRow($row);
   }
