@@ -29,10 +29,14 @@ process:
     plugin: migration
     migration: od_ext_db_node_consultation
     source: tags
-  field_idea_tags/target_id:
-    plugin: migration
-    migration: od_ext_db_taxonomy_term
+  field_idea_tags:
+    plugin: iterator
     source: freetags
+    process:
+      target_id:
+        plugin: migration
+        migration: od_ext_db_taxonomy_term
+        source: field_idea_tags_tid
   field_idea_status/target_id:
     plugin: migration
     migration: od_ext_db_taxonomy_term

@@ -161,7 +161,6 @@ class AppNode extends SqlBase {
       ->fetchAssoc();
 
     // App Categories (Subject).
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $app_categories = $this->select('field_data_field_application_categories', 'df')
       ->fields('df', ['field_application_categories_target_id'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -169,10 +168,9 @@ class AppNode extends SqlBase {
       ->condition('language', 'und')
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_application_categories_target_id');
 
     // App Tags (Keywords).
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $app_tags = $this->select('field_data_field_app_tags', 'df')
       ->fields('df', ['field_app_tags_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -180,10 +178,9 @@ class AppNode extends SqlBase {
       ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_app_tags_tid');
 
     // Community.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $community = $this->select('field_data_field_community', 'df')
       ->fields('df', ['field_community_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -191,10 +188,9 @@ class AppNode extends SqlBase {
       ->condition('language', 'und')
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_community_tid');
 
     // Departments.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $departments = $this->select('field_data_field_departments', 'df')
       ->fields('df', ['field_departments_target_id'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -202,10 +198,9 @@ class AppNode extends SqlBase {
       ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_departments_target_id');
 
     // Device Formats.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $device_formats = $this->select('field_data_field_device_formats', 'df')
       ->fields('df', ['field_device_formats_target_id'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -213,10 +208,9 @@ class AppNode extends SqlBase {
       ->condition('language', 'und')
       ->condition('bundle', 'apps')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_device_formats_target_id');
 
     // Ribbon.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $ribbon = $this->select('field_data_field_ribbon', 'df')
       ->fields('df', ['field_ribbon_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -235,11 +229,11 @@ class AppNode extends SqlBase {
     $row->setSourceProperty('dev', $dev[0]);
     $row->setSourceProperty('submitter', $submitter[0]);
     $row->setSourceProperty('date_pub', $date_pub[0]);
-    $row->setSourceProperty('app_categories', $app_categories['field_application_categories_target_id']);
-    $row->setSourceProperty('app_freetags', $app_tags['field_app_tags_tid']);
-    $row->setSourceProperty('community', $community['field_community_tid']);
-    $row->setSourceProperty('departments', $departments['field_departments_target_id']);
-    $row->setSourceProperty('device_formats', $device_formats['field_device_formats_target_id']);
+    $row->setSourceProperty('app_categories', $app_categories);
+    $row->setSourceProperty('app_freetags', $app_tags);
+    $row->setSourceProperty('community', $community);
+    $row->setSourceProperty('departments', $departments);
+    $row->setSourceProperty('device_formats', $device_formats);
     $row->setSourceProperty('ribbon', $ribbon['field_ribbon_tid']);
     $row->setSourceProperty('file_fid', $file['field_application_screenshots_fid']);
     $row->setSourceProperty('file_alt', $file['field_application_screenshots_alt']);

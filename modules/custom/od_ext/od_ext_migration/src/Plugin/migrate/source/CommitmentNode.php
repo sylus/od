@@ -109,7 +109,7 @@ class CommitmentNode extends SqlBase {
       ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'commitment')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_department_tid');
 
     // Relevance.
     $relevance = $this->select('field_data_field_commitment_relevance', 'df')
@@ -130,7 +130,7 @@ class CommitmentNode extends SqlBase {
       ->condition('language', 'und')
       ->condition('bundle', 'commitment')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_deliverable_target_id');
 
     // End Date.
     $end_date = $this->select('field_data_field_commitment_end_date_txt', 'df')
@@ -143,7 +143,6 @@ class CommitmentNode extends SqlBase {
       ->fetchCol();
 
     // Tags.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $tags = $this->select('field_data_field_commitment_tags', 'df')
       ->fields('df', ['field_commitment_tags_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -151,10 +150,9 @@ class CommitmentNode extends SqlBase {
       ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'commitment')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_commitment_tags_tid');
 
     // Pillars.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $pillars = $this->select('field_data_field_pillars', 'df')
       ->fields('df', ['field_pillars_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -178,12 +176,12 @@ class CommitmentNode extends SqlBase {
       $row->setSourceProperty('title', $title[0]);
     }
     $row->setSourceProperty('body', $body[0]);
-    $row->setSourceProperty('department', $department['field_department_tid']);
+    $row->setSourceProperty('department', $department);
     $row->setSourceProperty('ambition', $ambition[0]);
     $row->setSourceProperty('relevance', $relevance[0]);
-    $row->setSourceProperty('deliverable', $deliverable['field_deliverable_target_id']);
+    $row->setSourceProperty('deliverable', $deliverable);
     $row->setSourceProperty('end_date', $end_date[0]);
-    $row->setSourceProperty('tags', $tags['field_commitment_tags_tid']);
+    $row->setSourceProperty('tags', $tags);
     $row->setSourceProperty('pillars', $pillars['field_pillars_tid']);
     $row->setSourceProperty('status', $status[0]);
 

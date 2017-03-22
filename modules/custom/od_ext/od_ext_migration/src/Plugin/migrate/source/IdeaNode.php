@@ -96,10 +96,9 @@ class IdeaNode extends SqlBase {
       ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'idea')
       ->execute()
-      ->fetchAssoc();
+      ->fetchAllAssoc('field_idea_tags_tid');
 
     // Status.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $status = $this->select('field_data_sc_consultation_field_status', 'df')
       ->fields('df', ['sc_consultation_field_status_tid'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -120,7 +119,6 @@ class IdeaNode extends SqlBase {
       ->fetchCol();
 
     // Tags.
-    // TODO: switch to fetchAllAssoc + remap in YML.
     $tags = $this->select('field_data_field_consultation', 'df')
       ->fields('df', ['field_consultation_target_id'])
       ->condition('entity_id', $row->getSourceProperty('nid'))
@@ -134,7 +132,7 @@ class IdeaNode extends SqlBase {
       $row->setSourceProperty('title', $title[0]);
     }
     $row->setSourceProperty('body', $body[0]);
-    $row->setSourceProperty('freetags', $freetags['field_idea_tags_tid']);
+    $row->setSourceProperty('freetags', $freetags);
     $row->setSourceProperty('status', $status['sc_consultation_field_status_tid']);
     $row->setSourceProperty('submission_name', $submission_name[0]);
     $row->setSourceProperty('tags', $tags['field_consultation_target_id']);
