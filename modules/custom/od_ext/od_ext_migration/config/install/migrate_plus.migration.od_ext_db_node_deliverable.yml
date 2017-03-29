@@ -20,7 +20,9 @@ process:
   sticky:
     plugin: default_value
     default_value: 0
-  body/value: body
+  body/value:
+    plugin: media_tags
+    source: body
   body/format:
     plugin: default_value
     default_value: rich_text
