@@ -1,0 +1,9 @@
+name: 'Open Data Fonts'
+description: 'Iconic font designed for use with Open Data.'
+type: module
+core: 8.x
+package: 'OpenData'
+
+# Required modules
+dependencies:
+  - icon
