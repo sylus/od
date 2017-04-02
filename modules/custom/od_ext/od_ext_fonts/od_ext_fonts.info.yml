@@ -6,4 +6,4 @@ package: 'OpenData'
 
 # Required modules
 dependencies:
-  - icon
+  - drupal:icon
