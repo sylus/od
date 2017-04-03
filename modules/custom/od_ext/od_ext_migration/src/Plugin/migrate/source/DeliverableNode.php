@@ -66,6 +66,11 @@ class DeliverableNode extends SqlBase {
    */
   public function prepareRow(Row $row) {
 
+    // Translation support.
+    if (!empty($row->getSourceProperty('translations'))) {
+      $row->setSourceProperty('language', 'fr');
+    }
+
     // Title Field.
     $title = $this->select('field_data_title_field', 'db')
       ->fields('db', ['title_field_value'])
@@ -118,6 +123,9 @@ class DeliverableNode extends SqlBase {
 
     if (!empty($title[0])) {
       $row->setSourceProperty('title', $title[0]);
+    }
+    elseif (!empty($row->getSourceProperty('translations'))) {
+      return FALSE;
     }
     $row->setSourceProperty('body', $body[0]);
     $row->setSourceProperty('next_steps', $next_steps[0]);

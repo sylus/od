@@ -113,14 +113,21 @@ class CommentImport extends SqlBase {
       'suggested_app',
       'suggested_dataset',
     ];
+    $found = FALSE;
     foreach ($lookup as $bundle) {
       $nid = (int) \Drupal::database()->query("SELECT destid1 FROM {migrate_map_od_ext_db_node_$bundle} WHERE sourceid1 = :sourceId", [':sourceId' => $row->getSourceProperty('nid')])->fetchField();
       if (!empty($nid)) {
+        $found = TRUE;
         $row->setSourceProperty('nid', $nid);
         if ($bundle == 'blog') {
           $row->setSourceProperty('field_name', 'field_blog_comments');
         }
       }
+    }
+
+    // Should only be caught for opendata_package.
+    if (!$found) {
+      return FALSE;
     }
 
     // Comment Body.

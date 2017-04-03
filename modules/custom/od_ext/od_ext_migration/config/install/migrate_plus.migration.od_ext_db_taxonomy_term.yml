@@ -1,10 +1,11 @@
 id: od_ext_db_taxonomy_term
-label: Database import for Taxonomy Terms from legacy Drupal database
+migration_tags: null
 migration_group: od_external
 dependencies:
   enforced:
     module:
       - od_ext_migration
+label: 'Database import for Taxonomy Terms from legacy Drupal database'
 source:
   plugin: taxonomy_term_data
   target: source_migration
