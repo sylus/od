@@ -22,6 +22,11 @@ process:
     source:
       - '@source_full_path'
       - '@destination_full_path'
+  filemime: filemime
+  status: status
+  created: timestamp
+  changed: timestamp
+  fid: fid
   uid:
     plugin: default_value
     default_value: 1
