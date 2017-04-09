@@ -19,7 +19,7 @@
         "drupal/icon": "1.x-dev",
         "drupal/rate": "1.x-dev",
         "drupal/sarnia": "dev-8.x-1.x",
-        "drupal/search_api": "1.0-beta4",
+        "drupal/search_api": "1.0-beta5",
         "drupal/search_api_solr": "1.0-beta1",
         "drupal/votingapi": "3.0-alpha2",
         "drupal/views_autocomplete_filters": "1.1",
