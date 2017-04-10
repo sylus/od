@@ -18,9 +18,9 @@
         "drupal/google_analytics_reports": "3.0-beta1",
         "drupal/icon": "1.x-dev",
         "drupal/rate": "1.x-dev",
-        "drupal/sarnia": "dev-8.x-1.x",
         "drupal/search_api": "1.0-beta5",
         "drupal/search_api_solr": "1.0-beta1",
+        "drupal/search_api_solr_datasource": "dev-8.x-1.x",
         "drupal/votingapi": "3.0-alpha2",
         "drupal/views_autocomplete_filters": "1.1",
         "drupal/views_data_export": "1.0-alpha4",
@@ -36,7 +36,7 @@
         },
         {
           "type": "vcs",
-          "url": "http://github.com/sylus/sarnia.git"
+          "url": "http://github.com/dcameron/search_api_solr_datasource.git"
         },
         {
             "type"    : "package",

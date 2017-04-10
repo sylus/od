@@ -1,6 +1,4 @@
 bundle: od
 required:
-  - field.storage.solr_document.solr_field
-  - sarnia.type.pd_core_ati
-  - search_api.index.sarnia_pd_core_ati
+  - search_api.index.pd_core_ati
   - search_api.server.pd_core_ati

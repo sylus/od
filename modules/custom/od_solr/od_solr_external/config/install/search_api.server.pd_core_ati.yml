@@ -2,12 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-    - sarnia
     - search_api_solr
 id: pd_core_ati
 name: 'Proactive Disclosure: Core ATI'
 description: 'Proactive Disclosure: Core ATI'
-backend: sarnia_solr_service
+backend: search_api_solr
 backend_config:
   connector: standard
   connector_config:
@@ -16,17 +15,15 @@ backend_config:
     port: '8983'
     path: /solr
     core: core_ati
-    timeout: '5'
-    index_timeout: '10'
-    optimize_timeout: '15'
+    timeout: 5
+    index_timeout: 5
+    optimize_timeout: 10
     solr_version: ''
     http_method: AUTO
-  retrieve_data: 0
-  highlight_data: 0
-  excerpt: 0
-  skip_schema_check: 0
-  sarnia_request_handler: ''
-  sarnia_default_query: '*:*'
-  site_hash: 1
+  retrieve_data: true
+  highlight_data: false
+  excerpt: false
+  skip_schema_check: false
+  site_hash: true
   autocorrect_spell: true
   autocorrect_suggest_words: true
