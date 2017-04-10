@@ -36,7 +36,7 @@
         },
         {
           "type": "vcs",
-          "url": "http://github.com/dcameron/search_api_solr_datasource.git"
+          "url": "http://github.com/sylus/search_api_solr_datasource.git"
         },
         {
             "type"    : "package",
