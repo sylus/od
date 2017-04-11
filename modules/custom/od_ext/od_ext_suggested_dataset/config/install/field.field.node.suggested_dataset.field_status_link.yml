@@ -13,7 +13,7 @@ bundle: suggested_dataset
 label: 'Status link'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

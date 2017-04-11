@@ -163,6 +163,7 @@ class AppNode extends SqlBase {
       ])
       ->condition('entity_id', $row->getSourceProperty('nid'))
       ->condition('revision_id', $row->getSourceProperty('vid'))
+      ->condition('language', $row->getSourceProperty('language'))
       ->condition('bundle', 'apps')
       ->execute()
       ->fetchAllAssoc('field_application_screenshots_fid');
