@@ -41,15 +41,36 @@ source:
               region: top_left
               weight: 5
             -
-              id: 'block_content:block_home'
-              label: Home
+              id: 'block_content:pillars'
+              label: Pillars
               label_display: 0
               region: top_left
               view_mode: full
               weight: 10
             -
+              id: 'block_content:block_home'
+              label: Home
+              label_display: 0
+              region: top_left
+              view_mode: full
+              weight: 15
+            -
+              id: 'views_block:landing_page-block_1'
+              label: 'Landing page'
+              label_display: 0
+              region: top_left
+              view_mode: full
+              weight: 20
+            -
               id: 'views_block:blog-block_1'
               label: 'Latest blogs'
+              label_display: visible
+              region: top_right
+              view_mode: full
+              weight: 5
+            -
+              id: 'views_block:datasets-block_1'
+              label: 'Latest datasets'
               label_display: visible
               region: top_right
               view_mode: full
@@ -62,12 +83,12 @@ source:
               view_mode: default
               weight: 0
             -
-              id: 'views_block:landing_page-block_1'
-              label: 'Landing page'
+              id: 'views_block:blocks-block_1'
+              label: 'Spotlight'
               label_display: 0
-              region: top_left
+              region: bottom
               view_mode: full
-              weight: 10
+              weight: 0
           id: panels_variant
           uuid: 91b9d430-7b91-4a22-ac4d-2e5e0376c6a2
           label: 'Two Column'
@@ -122,7 +143,7 @@ source:
                 classes:
                   col-sm-12: col-sm-12
                 add_region_classes: 1
-                attributes: ''
+                attributes: 'class|mrgn-tp-lg'
           page_title: '[node:title]'
           storage_type: panelizer_default
           storage_id: 'node:landing_page:full:two_column'
@@ -541,4 +562,7 @@ destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
+    - od_ext_block_basic
     - od_ext_block_search
+    - od_ext_block_spotlight
+    - od_ext_media_slideshow
