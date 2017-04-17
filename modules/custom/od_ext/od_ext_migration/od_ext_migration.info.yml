@@ -6,6 +6,7 @@ package: 'Open Data'
 
 # Required modules
 dependencies:
+  - drupal:bootstrap_layouts
   - drupal:migrate
   - drupal:migrate_plus
   - drupal:migrate_tools
